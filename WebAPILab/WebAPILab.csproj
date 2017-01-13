@@ -211,6 +211,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Attributes\BTestAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\ATestAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\CustomFilterProvider.cs" />
+    <Compile Include="Infrastructure\Attributes\CustomFilterInfo.cs" />
+    <Compile Include="Infrastructure\Attributes\IBaseAttribute.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
