@@ -35,6 +35,10 @@ namespace WebAPILab.Controllers
         // GET api/values/5
         public string Get(int id)
         {
+            if(id == 4)
+            {
+                throw new Exception("當id=4就會產生Exception");
+            }
             return "value";
         }
 
