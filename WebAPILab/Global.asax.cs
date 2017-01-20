@@ -36,5 +36,17 @@ namespace WebAPILab
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
         }
+
+        protected void Application_PreSendRequestHeaders(object sender, EventArgs e)
+        {
+            HttpApplication httpApplication = sender as HttpApplication;
+            if (httpApplication != null 
+                && httpApplication.Context != null)
+            {
+                httpApplication.Context.Response.Headers.Remove("Server");
+                httpApplication.Context.Response.Headers.Remove("X-AspNet-Version");
+                
+            }
+        }
     }
 }
