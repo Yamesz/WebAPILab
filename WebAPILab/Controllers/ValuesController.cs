@@ -10,6 +10,7 @@ using WebAPILab.Infrastructure.Attributes;
 
 namespace WebAPILab.Controllers
 {
+    [RoutePrefix("products")]
     public class ValuesController : ApiController
     {
         [HttpGet]
@@ -33,6 +34,7 @@ namespace WebAPILab.Controllers
         }
 
         // GET api/values/5
+        [Route("products/{id:int}")]
         public string Get(int id)
         {
             if(id == 4)
