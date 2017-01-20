@@ -32,6 +32,9 @@ namespace WebAPILab
                defaultprovider);
             //=============================================================
 
+            //移除XML Formatter
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+
         }
     }
 }
