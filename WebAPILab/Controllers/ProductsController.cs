@@ -18,16 +18,16 @@ namespace WebAPILab.Controllers
         {
             db = new FakeDB();
         }
-      
+
+        //GET: products
         [Route("")]
         public IQueryable<Product> GetProduct()
         {
             return db.Product.AsQueryable();
         }
 
-        // GET: products/search/Will
+        // GET: products/search/Jack
         [Route("search/{name}")]
-        [ResponseType(typeof(Product))]
         public IHttpActionResult GetSearchProduct(string name)
         {
             Product product = db.Product.FirstOrDefault(p => p.ProductName.Contains(name));
@@ -40,9 +40,8 @@ namespace WebAPILab.Controllers
         }
 
         // GET: products/5
-        [Route("{id:int}")]
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult GetProduct(int id)
+        [Route("{id:int=87}")]
+        public IHttpActionResult GetProduct1(int id)
         {
             Product product = db.Product.Where(x => x.Id == id).FirstOrDefault();
             if (product == null)
@@ -73,7 +72,7 @@ namespace WebAPILab.Controllers
             }
 
             var isSuccess = db.update(id, product);
-            if(isSuccess == false)
+            if (isSuccess == false)
             {
                 return NotFound();
             }
@@ -99,5 +98,67 @@ namespace WebAPILab.Controllers
 
             return Ok(db.Product);
         }
+
+        // POST api/test/5 (用 ~ 可以覆寫 RoutePrefix 設定)
+        [Route("~/api/test/{id:int}")]
+        public IHttpActionResult GetProduct2(int id)
+        {
+            Product product = db.Product.Where(x => x.Id == id).FirstOrDefault();
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
+
+        [Route("{id}", Name = "GetProductById", Order = 1)]
+        public IHttpActionResult GetUrl(int id)
+        {
+            var uri = Url.Link("GetProductById", new { id = id });
+            return Ok(uri);
+        }
+
+        [Route("~/v1/Now/{*x:datetime}", Name = "GetNow", Order = 1)]
+        public IHttpActionResult GetNow(DateTime x)
+        {
+            var uri = Url.Link("GetNow", new { x = DateTime.Now });
+            return Ok(uri);
+        }
+
+        [Route("~/Demo/{age}/{xx}")]
+        public IHttpActionResult GetDemo2(int age ,string xx , string name)
+        {
+            return Ok(new {age = age, xx = xx, name = name });
+        }
+
+        [Route("~/Demo2/{age}/{xx}")]
+        public IHttpActionResult GetDemo2([FromUri]Demo2 p)
+        {
+            return Ok(new { FromUri = 'Y', age = p.age, xx = p.xx, name = p.name });
+        }
+
+        [Route("~/Demo3")]
+        public IHttpActionResult PostDemo3(Demo2 p)
+        {
+            return Ok(new { age = p.age, xx = p.xx, name = $"{p.name}Demo3" });
+        }
+
+        [Route("~/Demo4")]
+        public IHttpActionResult PostDemo4([FromBody]int id)
+        {
+            return Ok(new {id=id });
+        }
+
+        public class Demo2
+        {
+            public int age { get; set; }
+            public string xx { get; set; }
+            public string name { get; set; }
+        }
     }
+
+
 }
+
+//[ResponseType(typeof(Product))]
