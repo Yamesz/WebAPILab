@@ -35,7 +35,7 @@ namespace WebAPILab.Controllers
         public IHttpActionResult GetDemo4()
         {
             //201
-            return Created<Demo2>("llll", new Demo2());
+            return Created<Demo2>("http://test.com/GetDemo4", new Demo2());
         }
 
         [Route("IHttpActionResult/InternalServerError")]
@@ -49,7 +49,7 @@ namespace WebAPILab.Controllers
         public IHttpActionResult GetDemo6()
         {
             //404
-            return Content(HttpStatusCode.NotFound,"逆天專用");
+            return Content(HttpStatusCode.NotFound,"騙你的的啦");
         }
 
         [Route("IHttpActionResult/Content2")]
