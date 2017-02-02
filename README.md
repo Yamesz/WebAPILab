@@ -10,4 +10,4 @@
 - 加入 IHttpActionResult 範例
 - 加入 HttpResponseMessage 範例
 - 加入 Exception 範例
-
+- 加入 設定 JsonFormatter
