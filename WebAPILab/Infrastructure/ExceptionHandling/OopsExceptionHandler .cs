@@ -33,22 +33,20 @@ namespace WebAPILab.Infrastructure.ExceptionHandling
                 this.Request = request;
             }
 
-
             public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
             {
                 var errorContent = new JObject()
-            {
-                new JProperty("status","ERROR" ),
-                new JProperty("message", Exception.Message)
-            };
+                {
+                    new JProperty("status","ERROR" ),
+                    new JProperty("message", Exception.Message)
+                };
 
-                //HttpResponseMessage response =
-                //                 new HttpResponseMessage(HttpStatusCode.InternalServerError);
-                //response.Content = errorContent;
-                //response.RequestMessage = Request;
-                var a = this.Request.CreateResponse(HttpStatusCode.InternalServerError, errorContent);
-                return Task.FromResult(a);
+                var response = this.Request.CreateResponse(
+                    HttpStatusCode.InternalServerError, errorContent);
+                return Task.FromResult(response);
             }
+
+           
         }
     }
 }
