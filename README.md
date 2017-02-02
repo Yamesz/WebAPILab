@@ -8,6 +8,6 @@
 - RoutePrefix, Route http動詞放在action name (開始 - 習慣取代配置)
 - 加入 路由機制 範例
 - 加入 IHttpActionResult 範例
-
-
+- 加入 HttpResponseMessage 範例
+- 加入 Exception 範例
 
