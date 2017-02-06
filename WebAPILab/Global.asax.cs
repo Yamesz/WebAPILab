@@ -39,9 +39,9 @@ namespace WebAPILab
             //取得 JsonFormatter
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             //輸出 Camel Casing 格式 (不改變 Model 定義)
-            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             //Json.NET 預設會序列化為本地時間，也可改成預設序列化為 UTC 時間
-            json.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
+            //json.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
         }
 
         protected void Application_PreSendRequestHeaders(object sender, EventArgs e)

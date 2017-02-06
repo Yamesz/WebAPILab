@@ -16,8 +16,8 @@ namespace WebAPILab.Infrastructure.Handlers
 
         public SampleHandler(string text, int indent)
         {
-            if (text == null){throw new ArgumentNullException("text");}
-            if (indent < 0){throw new ArgumentException("indent");}
+            if (text == null) { throw new ArgumentNullException("text"); }
+            if (indent < 0) { throw new ArgumentException("indent"); }
             _text = text;
             _indentation = new String(' ', indent);
         }

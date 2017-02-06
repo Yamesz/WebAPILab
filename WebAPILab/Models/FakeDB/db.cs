@@ -22,6 +22,7 @@ namespace WebAPILab.Models.FakeDB
                 new Product() { Id = 8, ProductName = "h" },
                 new Product() { Id = 9, ProductName = "i" },
                 new Product() { Id = 10, ProductName = "j" },
+                new Product() { Id = 87, ProductName = "八七" },
             };
         }
         public IEnumerable<Product> Product

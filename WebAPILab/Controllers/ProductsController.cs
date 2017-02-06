@@ -26,11 +26,11 @@ namespace WebAPILab.Controllers
             return db.Product.AsQueryable();
         }
 
-        // GET: products/search/Jack
-        [Route("search/{name}")]
-        public IHttpActionResult GetSearchProduct(string name)
+        // GET: products/5
+        [Route("{id:int=8}")]
+        public IHttpActionResult GetProduct1(int id)
         {
-            Product product = db.Product.FirstOrDefault(p => p.ProductName.Contains(name));
+            Product product = db.Product.Where(x => x.Id == id).FirstOrDefault();
             if (product == null)
             {
                 return NotFound();
@@ -39,11 +39,11 @@ namespace WebAPILab.Controllers
             return Ok(product);
         }
 
-        // GET: products/5
-        [Route("{id:int=87}")]
-        public IHttpActionResult GetProduct1(int id)
+        // GET: products/search/Jack
+        [Route("search/{name}")]
+        public IHttpActionResult GetSearchProduct(string name)
         {
-            Product product = db.Product.Where(x => x.Id == id).FirstOrDefault();
+            Product product = db.Product.FirstOrDefault(p => p.ProductName.Contains(name));
             if (product == null)
             {
                 return NotFound();
@@ -112,17 +112,24 @@ namespace WebAPILab.Controllers
             return Ok(product);
         }
 
-        [Route("{id}", Name = "GetProductById", Order = 1)]
+        [Route("routeName/{id}", Name = "GetProductById", Order = 1)]
         public IHttpActionResult GetUrl(int id)
         {
             var uri = Url.Link("GetProductById", new { id = id });
             return Ok(uri);
         }
 
-        [Route("~/v1/Now/{*x:datetime}", Name = "GetNow", Order = 1)]
-        public IHttpActionResult GetNow(DateTime x)
+        [Route("~/v1/Now/{x:datetime}", Name = "GetNow1", Order = 1)]
+        public IHttpActionResult GetNow1(DateTime x)
         {
-            var uri = Url.Link("GetNow", new { x = DateTime.Now });
+            var uri = Url.Link("GetNow1", new { x = DateTime.Now });
+            return Ok(uri);
+        }
+
+        [Route("~/v2/Now/{*x:datetime}", Name = "GetNow2", Order = 1)]
+        public IHttpActionResult GetNow2(DateTime x)
+        {
+            var uri = Url.Link("GetNow2", new { x = DateTime.Now });
             return Ok(uri);
         }
 
