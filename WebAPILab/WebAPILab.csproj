@@ -212,6 +212,7 @@
     <Compile Include="Controllers\IHttpActionResultDemoController.cs" />
     <Compile Include="Infrastructure\ActionFilters\NotImplExceptionFilterAttribute.cs" />
     <Compile Include="Infrastructure\ExceptionHandling\OopsExceptionHandler .cs" />
+    <Compile Include="Infrastructure\Handlers\SampleHandler.cs" />
     <Compile Include="Models\FakeDB\db.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
