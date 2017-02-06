@@ -11,3 +11,4 @@
 - 加入 HttpResponseMessage 範例
 - 加入 Exception 範例
 - 加入 設定 JsonFormatter
+- 加入 DelegatingHandler 範例
