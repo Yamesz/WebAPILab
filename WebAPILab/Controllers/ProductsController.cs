@@ -157,6 +157,12 @@ namespace WebAPILab.Controllers
             return Ok(new {id=id });
         }
 
+        [Route("~/{a:int}/Demo5")]
+        public IHttpActionResult PutDemo5(int a, Demo2 p)
+        {
+            return Ok(new {a = a, age = p.age, xx = p.xx, name = $"{p.name}Demo5" });
+        }
+
         public class Demo2
         {
             public int age { get; set; }
