@@ -27,7 +27,7 @@ namespace WebAPILab.Controllers
         }
 
         // GET: products/5
-        [Route("{id:int=8}")]
+        [Route("{Version:VersionConstraint(v1)}/{id:int=8}")]
         public IHttpActionResult GetProduct1(int id)
         {
             Product product = db.Product.Where(x => x.Id == id).FirstOrDefault();

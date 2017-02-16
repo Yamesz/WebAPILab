@@ -9,6 +9,8 @@ using System.Web.Http.ExceptionHandling;
 using WebAPILab.Infrastructure.ExceptionHandling;
 using WebAPILab.Infrastructure.ActionFilters;
 using WebAPILab.Infrastructure.Handlers;
+using System.Web.Http.Routing;
+using WebAPILab.Infrastructure.Routing;
 
 namespace WebAPILab
 {
@@ -16,6 +18,12 @@ namespace WebAPILab
     {
         public static void Register(HttpConfiguration config)
         {
+            var constraintsResolver = new DefaultInlineConstraintResolver();
+            constraintsResolver.ConstraintMap.Add(
+                "VersionConstraint",
+                typeof(VersionConstraint));
+         
+
             //加入自訂DelegatingHandler
             config.MessageHandlers.Add(new SampleHandler("Server A", 2));
             config.MessageHandlers.Add(new SampleHandler("Server B", 4));
@@ -32,7 +40,7 @@ namespace WebAPILab
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API 路由
-            config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes(constraintsResolver);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
