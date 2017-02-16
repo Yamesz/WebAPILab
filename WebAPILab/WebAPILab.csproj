@@ -34,7 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\WebAPILab.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -223,6 +224,8 @@
     <Compile Include="Infrastructure\ActionFilters\NotImplExceptionFilterAttribute.cs" />
     <Compile Include="Infrastructure\ExceptionHandling\OopsExceptionHandler .cs" />
     <Compile Include="Infrastructure\Handlers\SampleHandler.cs" />
+    <Compile Include="Infrastructure\Modules\FooModule.cs" />
+    <Compile Include="Infrastructure\Modules\RequestProcessModule.cs" />
     <Compile Include="Models\FakeDB\db.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
