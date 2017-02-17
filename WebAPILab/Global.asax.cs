@@ -36,7 +36,7 @@ namespace WebAPILab
             //=============================================================
 
             //移除XML Formatter
-            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+            //GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
             //取得 JsonFormatter
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
